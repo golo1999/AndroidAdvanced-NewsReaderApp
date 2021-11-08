@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.newsreaderapp.R;
 
 public class MainFragment extends Fragment {
-
     private MainViewModel mViewModel;
 
     public static MainFragment newInstance() {
@@ -22,16 +21,17 @@ public class MainFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_fragment, container, false);
+    public View onCreateView(final @NonNull LayoutInflater inflater,
+                             final @Nullable ViewGroup container,
+                             final @Nullable Bundle savedInstanceState) {
+        final View v = inflater.inflate(R.layout.main_fragment, container, false);
+
+        setVariables(v);
+
+        return v;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        // TODO: Use the ViewModel
+    private void setVariables(final View view) {
+        mViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
     }
-
 }
